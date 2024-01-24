@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     private void BasicMovement()
     {
         Vector3 movementDirection = GetNormalizedMoveDirection();
-        Debug.Log(movementDirection);
+        //Debug.Log(movementDirection);
         transform.position += movementDirection * movementSpeed * Time.deltaTime;
     }
 }
