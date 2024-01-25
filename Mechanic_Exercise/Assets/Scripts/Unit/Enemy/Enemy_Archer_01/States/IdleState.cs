@@ -37,8 +37,8 @@ public class IdleState : BaseState
         {
             if (collider.CompareTag("Player"))
             {
-                Debug.Log("Hit");
-                //OnCollisionEnter(enemyStateManager);
+                //Debug.Log("Hit");
+                OnCollisionEnter(enemyStateManager);
             }
         }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     protected HealthSystem healthSystem;
+    private bool isAlert, isAiming = false;
     protected virtual void Awake()
     {
         healthSystem = new HealthSystem();
@@ -32,5 +33,21 @@ public abstract class Enemy : MonoBehaviour
     public HealthSystem GetHealthSystem()
     {
         return healthSystem;
+    }
+    public void SetAlert(bool value)
+    {
+        isAlert = value;
+    }
+    public void SetAiming(bool value)
+    {
+        isAiming = value;
+    }
+    public bool GetIsAlert()
+    {
+        return isAlert;
+    }
+    public bool GetIsAiming()
+    {
+        return isAiming;
     }
 }
