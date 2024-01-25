@@ -14,6 +14,16 @@ public class ChaseAggroChecker : AgroChecker
         }
     }
 
+    protected override void OnTriggerExit(Collider other)
+    {
+        base.OnTriggerExit(other);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Chase Aggro!");
+            enemy.SetAlert(false);
+        }
+    }
+
     protected override void Start()
     {
         base.Start();

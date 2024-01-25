@@ -13,6 +13,16 @@ public class AimingAggroChecker : AgroChecker
         }
     }
 
+    protected override void OnTriggerExit(Collider other)
+    {
+        base.OnTriggerExit(other);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Aiming Aggro!");
+            enemy.SetAiming(false);
+        }
+    }
+
     protected override void Start()
     {
         base.Start();

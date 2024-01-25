@@ -2,23 +2,25 @@ using UnityEngine;
 
 public class AlertState : BaseState
 {
-    public override void EnterState(EnemyStateManager enemyStateManager)
+    private _EnemyArcherStateManager stateManager;
+    public AlertState(Enemy enemy, EnemyStateManager stateManager)
+    {
+        this.enemy = enemy;
+        this.stateManager = stateManager as _EnemyArcherStateManager;
+    }
+    public override void EnterState()
     {
         Debug.Log("Entering Alert State");
     }
 
-    public override void ExitState(EnemyStateManager enemyStateManager)
+    public override void ExitState()
     {
-        
+        Debug.Log("Exiting Alert State");
     }
 
-    public override void OnCollisionEnter(EnemyStateManager enemyStateManager)
+    public override void UpdateState()
     {
-        
-    }
-
-    public override void UpdateState(EnemyStateManager enemyStateManager)
-    {
-        
+        if (enemy.GetIsAiming()) stateManager.SwitchState(stateManager.aimingState);
+        if (!enemy.GetIsAlert()) stateManager.SwitchState(stateManager.idleState);
     }
 }

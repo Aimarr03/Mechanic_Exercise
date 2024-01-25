@@ -4,20 +4,29 @@ using UnityEngine;
 
 public class _EnemyArcherStateManager : EnemyStateManager
 {
-    public AimingState aimingState = new AimingState();
-    public AlertState alertState = new AlertState();
-    public IdleState idleState = new IdleState();
+    private _EnemyArcher enemyArcher;
+
+    public AimingState aimingState;
+    public AlertState alertState;
+    public IdleState idleState;
 
     private _EnemyArcher _enemyArcher;
+    public void Awake()
+    {
+        enemyArcher = GetComponent<_EnemyArcher>();
+        aimingState = new AimingState(enemyArcher, this);
+        alertState = new AlertState(enemyArcher, this);
+        idleState = new IdleState(enemyArcher, this);
+    }
     public void Start()
     {
         _enemyArcher = GetComponent<_EnemyArcher>();
         currentBaseState = idleState;
-        currentBaseState.EnterState(this);
+        currentBaseState.EnterState();
     }
     public void Update()
     {
-        currentBaseState.UpdateState(this);
+        currentBaseState.UpdateState();
     }
     public Transform GetEnemyArcherTransform()
     {

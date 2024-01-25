@@ -6,8 +6,8 @@ public abstract class EnemyStateManager : MonoBehaviour
     
     public void SwitchState(BaseState newState)
     {
-        currentBaseState.ExitState(this);
+        currentBaseState.ExitState();
         currentBaseState = newState;
-        currentBaseState.EnterState(this);
+        currentBaseState.EnterState();
     }
 }

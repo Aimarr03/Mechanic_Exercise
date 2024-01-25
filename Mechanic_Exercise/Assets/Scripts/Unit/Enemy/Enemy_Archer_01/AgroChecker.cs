@@ -15,6 +15,9 @@ public abstract class AgroChecker : MonoBehaviour
         enemy = collisionTrigger.GetComponentInParent<Enemy>();
     }
     protected abstract void OnTriggerEnter(Collider other);
-    
-    
+    protected virtual void OnTriggerExit(Collider other)
+    {
+
+    }
+
 }
