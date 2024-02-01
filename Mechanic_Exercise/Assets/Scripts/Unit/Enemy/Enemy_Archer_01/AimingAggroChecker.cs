@@ -10,6 +10,7 @@ public class AimingAggroChecker : AgroChecker
         {
             Debug.Log("Aiming Aggro!");
             enemy.SetAiming(true);
+            
         }
     }
 

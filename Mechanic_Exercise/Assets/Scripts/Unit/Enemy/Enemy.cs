@@ -1,11 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
+    [SerializeField] private Transform AimPosition;
+    [SerializeField] private Transform Bullet;
     protected HealthSystem healthSystem;
     private bool isAlert, isAiming = false;
+
+
+    public event EventHandler<Player> PlayerInVicinity;
     protected virtual void Awake()
     {
         healthSystem = new HealthSystem();
@@ -49,5 +55,14 @@ public abstract class Enemy : MonoBehaviour
     public bool GetIsAiming()
     {
         return isAiming;
+    }
+    public void TriggerPlayerInVicinity(Player player)
+    {
+        PlayerInVicinity?.Invoke(this, player);
+    }
+    public void GetAimComponent(out Transform aimPosition, out Transform bullet)
+    {
+        aimPosition = AimPosition; 
+        bullet = Bullet;
     }
 }

@@ -11,7 +11,13 @@ public class ChaseAggroChecker : AgroChecker
         {
             Debug.Log("Chase Aggro!");
             enemy.SetAlert(true);
+            Player player = collider.gameObject.GetComponent<Player>();
+            enemy.TriggerPlayerInVicinity(player);
         }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+            
     }
 
     protected override void OnTriggerExit(Collider other)
@@ -21,6 +27,7 @@ public class ChaseAggroChecker : AgroChecker
         {
             Debug.Log("Chase Aggro!");
             enemy.SetAlert(false);
+            enemy.TriggerPlayerInVicinity(null);
         }
     }
 
